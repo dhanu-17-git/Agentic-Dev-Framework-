@@ -1,72 +1,143 @@
-# AI Tool Kit — Production-Grade Agentic Development Framework
+<div align="center">
 
-> **Created & Maintained by:** Dhanush M  
-> **Version:** 3.1 — Elite Grade  
-> **License:** MIT License © Dhanush M, 2026
+```
+ █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ ██████╗
+██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔════╝
+███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║██║
+██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██║
+██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║╚██████╗
+╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝
+                              DEV FRAMEWORK
+```
+
+**A production-grade, anti-hallucination prompt framework**  
+**that turns any LLM into a deterministic senior-level software architect.**
+
+<br/>
+
+[![Version](https://img.shields.io/badge/version-3.1%20Elite-blueviolet?style=for-the-badge&logo=rocket)](.)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Files](https://img.shields.io/badge/framework-82%20files%20%2F%2014%20dirs-orange?style=for-the-badge)](.)
+[![LLM Support](https://img.shields.io/badge/works%20with-Claude%20%7C%20GPT--4o%20%7C%20Gemini-blue?style=for-the-badge)](.)
+[![IDE Support](https://img.shields.io/badge/IDE-Cursor%20%7C%20Windsurf%20%7C%20Copilot-teal?style=for-the-badge)](.)
+[![Made by](https://img.shields.io/badge/made%20by-Dhanush%20M-ff6b6b?style=for-the-badge)](https://github.com/dhanu-17-git)
+
+<br/>
+
+> *Stop fighting your AI. Make it follow rules.*
+
+</div>
 
 ---
 
-**AI Tool Kit** is a state-of-the-art, anti-hallucination prompt framework for AI-assisted software engineering. Designed to turn any LLM (Claude 3.5 Sonnet, GPT-4o, Gemini) or AI IDE (Cursor, Windsurf, Copilot) into a deterministic, senior-level software architect. 
+## The Problem
 
-Instead of dealing with AI hallucinations, lost context, and generic code, this toolkit forces the AI to use **Project Memory**, **Deterministic Task Contracts**, and a strict **9-Stage Development Pipeline**.
+Every developer using AI for code has hit the same wall:
 
-## 🚀 Usage
+- 🤦 AI invents files that don't exist
+- 🔁 AI ignores your architecture and rewrites everything
+- 📉 Context degrades over a long session — AI forgets what it built 10 messages ago
+- ⚠️ No planning, no contracts, no accountability — just vibes
 
-```
-1. Drop ai-tool-kit/ into any project root
-2. Tell the AI: "Read ai-tool-kit/AI_ENTRYPOINT.md"
-3. Ask for what you want in plain English
-4. The AI auto-detects task type and loads only the files it needs
-```
+**Agentic Dev Framework** fixes this by forcing the AI to operate inside a strict **9-stage pipeline** with **task contracts**, **project memory**, and **anti-hallucination guards** — before writing a single line of code.
 
-The entrypoint supports 5 modes — from a 2-file quick fix to a 12-file full pipeline — so context window usage is always minimal.
+---
 
-## 🔄 Pipeline
+## How It Works — 30 Seconds
 
-```
-brainstorming
-    ↓
-repository_mapper
-    ↓
-architect → produces feature_contract
-    ↓
-planner → produces implementation_plan
-    ↓
-coder → produces patch_contract
-    ↓
-tester
-    ↓
-lint_and_validate
-    ↓
-reviewer
-    ↓
-security
+```bash
+# 1. Drop the toolkit into any project
+cp -r ai-tool-kit/ your-project/
+
+# 2. Open Cursor / Windsurf / any AI IDE and say:
+"Read ai-tool-kit/AI_ENTRYPOINT.md"
+
+# 3. Then just ask in plain English:
+"Build a user authentication system with JWT and refresh tokens"
+
+# The AI auto-detects the task type, loads only the files it needs,
+# and follows the full pipeline — plan → contract → code → review → security
 ```
 
-## 📁 Structure — 82 Files / 14 Directories
+No configuration. No setup scripts. Just drop it in and go.
+
+---
+
+## The 9-Stage Pipeline
+
+The AI **cannot skip stages.** Each stage produces a contract that the next stage must consume.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    AGENTIC DEV PIPELINE                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   [1] BRAINSTORMING ──── Explores solution space               │
+│          │                                                      │
+│   [2] REPO MAPPER ────── Scans actual files (no inventing)     │
+│          │                                                      │
+│   [3] ARCHITECT ─────── Produces → feature_contract.md        │
+│          │                          ↑ must be approved         │
+│   [4] PLANNER ───────── Produces → implementation_plan.md     │
+│          │                          ↑ must be approved         │
+│   [5] CODER ─────────── Produces → patch_contract.md          │
+│          │                          ↑ tracks every change      │
+│   [6] TESTER ────────── Validates against contract            │
+│          │                                                      │
+│   [7] LINT & VALIDATE ── No untested code ships               │
+│          │                                                      │
+│   [8] REVIEWER ─────── Self-review against original spec      │
+│          │                                                      │
+│   [9] SECURITY ─────── OWASP + injection + secrets scan       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Context-Aware Loading
+
+The AI doesn't load all 82 files for every task. The smart entrypoint (`AI_ENTRYPOINT.md`) auto-detects task type and loads **only what's needed** — keeping context usage minimal.
+
+| Task Type | Files Loaded | Est. Tokens |
+|-----------|-------------|-------------|
+| Quick Fix | ~3 files | ~800 |
+| Debug Session | ~4 files | ~1,500 |
+| Code Review | ~4 files | ~1,500 |
+| Frontend Build | ~8 files | ~5,000 |
+| Project Bootstrap | ~10 files | ~12,000 |
+| Full Feature Dev | ~15 files | ~18,000 |
+
+---
+
+## Project Structure — 82 Files / 14 Directories
+
+<details>
+<summary><strong>📂 Expand full directory tree</strong></summary>
 
 ```
 ai-tool-kit/
-├── AI_ENTRYPOINT.md                    ← Smart bootloader (start here)
-├── SYSTEM_PROMPT.md                    ← Full execution rules
+│
+├── AI_ENTRYPOINT.md              ← Smart bootloader — start every session here
+├── SYSTEM_PROMPT.md              ← Full execution rules for the AI
 ├── README.md
 │
-├── PIPELINE/                           (2 files)
-│   ├── agent_pipeline.md              ← Stage execution order
-│   └── agent_handoff_rules.md         ← Contract handoff protocol
+├── PIPELINE/                     ← Stage execution & handoff rules
+│   ├── agent_pipeline.md
+│   └── agent_handoff_rules.md
 │
-├── TASK_CONTRACTS/                     (3 files)
-│   ├── feature_contract.md            ← architect output
-│   ├── implementation_plan.md         ← planner output
-│   └── patch_contract.md             ← coder output
+├── TASK_CONTRACTS/               ← Structured output contracts per stage
+│   ├── feature_contract.md       ← Architect output
+│   ├── implementation_plan.md    ← Planner output
+│   └── patch_contract.md         ← Coder output (tracks every file change)
 │
-├── AGENTS/                             (4 files)
+├── AGENTS/                       ← Core agent role definitions
 │   ├── architect.md
 │   ├── builder.md
 │   ├── reviewer.md
 │   └── debugger.md
 │
-├── TEAM_AGENTS/                        (6 files)
+├── TEAM_AGENTS/                  ← Extended team (6 specialists)
 │   ├── planner.md
 │   ├── coder.md
 │   ├── tester.md
@@ -74,19 +145,19 @@ ai-tool-kit/
 │   ├── security.md
 │   └── documenter.md
 │
-├── ANTI_HALLUCINATION/                 (4 files)
-│   ├── repository_mapper.md
+├── ANTI_HALLUCINATION/           ← Guards against AI making things up
+│   ├── repository_mapper.md      ← Forces AI to scan real files first
 │   ├── file_verification.md
 │   ├── layer_protection.md
 │   └── change_scope_guard.md
 │
-├── PROJECT_MEMORY/                     (4 files)
+├── PROJECT_MEMORY/               ← Persistent context across sessions
 │   ├── architecture_memory.md
 │   ├── feature_memory.md
 │   ├── tech_stack_memory.md
 │   └── decision_log.md
 │
-├── REPO_INTELLIGENCE/                  (8 files)
+├── REPO_INTELLIGENCE/            ← Deep codebase understanding layer
 │   ├── repo_summary.md
 │   ├── repo_overview.md
 │   ├── module_index.md
@@ -96,7 +167,7 @@ ai-tool-kit/
 │   ├── route_structure.md
 │   └── db_relationships.md
 │
-├── SKILLS/                             (19 files)
+├── SKILLS/                       ← 19 specialist skill modules
 │   ├── brainstorming.md
 │   ├── tdd_workflow.md
 │   ├── lint_and_validate.md
@@ -111,13 +182,13 @@ ai-tool-kit/
 │   ├── context_loader.md
 │   ├── error_recovery.md
 │   ├── anti_hallucination_guard.md
-│   ├── frontend_design.md             ← UI aesthetics
-│   ├── database_operations.md         ← Data safety rules
-│   ├── silent_failure_hunter.md       ← Elite analyzer
-│   ├── type_design_analyzer.md        ← Elite analyzer
-│   └── code_simplifier.md             ← Elite analyzer
+│   ├── frontend_design.md        ← UI aesthetics & component rules
+│   ├── database_operations.md    ← Data safety rules
+│   ├── silent_failure_hunter.md  ← Elite: finds suppressed errors
+│   ├── type_design_analyzer.md   ← Elite: type system analysis
+│   └── code_simplifier.md        ← Elite: reduces cognitive load
 │
-├── CONTEXT/                            (8 files)
+├── CONTEXT/                      ← AI operating rules & constraints
 │   ├── anti_hallucination_rules.md
 │   ├── coding_rules.md
 │   ├── load_rules.md
@@ -127,8 +198,8 @@ ai-tool-kit/
 │   ├── memory_rules.md
 │   └── intelligence_rules.md
 │
-├── WORKFLOWS/                          (7 files)
-│   ├── project_bootstrap.md           ← Zero-to-one starter
+├── WORKFLOWS/                    ← 7 reusable development workflows
+│   ├── project_bootstrap.md      ← Zero-to-one starter
 │   ├── feature_development.md
 │   ├── debugging.md
 │   ├── refactoring.md
@@ -136,18 +207,18 @@ ai-tool-kit/
 │   ├── code_review.md
 │   └── ai_safe_feature_flow.md
 │
-├── TEAM_WORKFLOWS/                     (2 files)
+├── TEAM_WORKFLOWS/               ← Multi-stage team pipelines
 │   ├── full_feature_pipeline.md
 │   └── hotfix_pipeline.md
 │
-├── DOC_TEMPLATES/                      (5 files)
+├── DOC_TEMPLATES/                ← 5 production documentation templates
 │   ├── architecture_template.md
 │   ├── module_summary_template.md
 │   ├── dev_rules_template.md
 │   ├── feature_spec_template.md
 │   └── api_documentation_template.md
 │
-└── IMPORTS/                            (5 files)
+└── IMPORTS/                      ← External skill packs
     └── antigravity-awesome-skills/
         ├── codebase_map.md
         ├── incremental_dev.md
@@ -156,29 +227,90 @@ ai-tool-kit/
         └── prompt_optimizer.md
 ```
 
-## 🔒 Safeguards
-
-| System | What It Prevents |
-|--------|-----------------|
-| Anti-Hallucination | Invented files, broken layers, large rewrites |
-| Task Contracts | Free-form reasoning, skipped planning, untracked changes |
-| Project Memory | Contradicted decisions, duplicated features |
-| Pipeline Gates | Skipped stages, missing handoffs, orphaned contracts |
-| Lint & Validate | Unchecked code quality |
-
-## ⚡ Context-Aware Loading
-
-The AI doesn't load all 82 files. The entrypoint auto-detects task type:
-
-| Task | Files Loaded | Context Cost |
-|------|-------------|--------------|
-| Quick Fix | ~3 files | ~800 tokens |
-| Debug | ~4 files | ~1,500 tokens |
-| Code Review | ~4 files | ~1,500 tokens |
-| Frontend Build | ~8 files | ~5,000 tokens |
-| Project Bootstrap | ~10 files | ~12,000 tokens |
-| Full Feature | ~15 files | ~18,000 tokens |
+</details>
 
 ---
 
-**Built with ❤️ by Dhanush M**
+## Safeguard Systems
+
+| System | Problem It Solves |
+|--------|-------------------|
+| 🛡️ **Anti-Hallucination** | AI inventing files, breaking existing layers, triggering massive rewrites |
+| 📋 **Task Contracts** | Free-form reasoning, skipped planning, untracked file changes |
+| 🧠 **Project Memory** | Contradicted decisions, duplicated features, forgotten architecture |
+| 🔗 **Pipeline Gates** | Skipped stages, missing handoffs, orphaned contracts |
+| ✅ **Lint & Validate** | Unchecked code shipping without quality gates |
+| 🔒 **Security Agent** | OWASP violations, injection vectors, hardcoded secrets |
+
+---
+
+## Compatible With
+
+| LLM | AI IDE | Works? |
+|-----|--------|--------|
+| Claude 3.5 / 3.7 Sonnet | Cursor | ✅ |
+| GPT-4o | Windsurf | ✅ |
+| Gemini 1.5 / 2.0 | GitHub Copilot | ✅ |
+| Any instruction-following LLM | Any AI IDE with file context | ✅ |
+
+---
+
+## Why This Exists
+
+Most AI coding frameworks focus on **what the AI can do.**  
+This one focuses on **what the AI is not allowed to do.**
+
+The insight: LLMs are powerful but undisciplined. They'll skip your architecture, invent imports, and hallucinate function signatures — not out of malice, but because no one gave them a contract to follow.
+
+**Agentic Dev Framework** is that contract. Every file is a constraint. Every stage is a gate. The AI becomes a disciplined engineer instead of an enthusiastic intern.
+
+---
+
+## Getting Started
+
+**Option A — New Project**
+```bash
+git clone https://github.com/dhanu-17-git/Agentic-Dev-Framework-.git
+cp -r Agentic-Dev-Framework-/ai-tool-kit/ your-new-project/
+```
+
+**Option B — Existing Project**
+```bash
+# From your project root:
+git clone https://github.com/dhanu-17-git/Agentic-Dev-Framework-.git temp-adf
+cp -r temp-adf/ai-tool-kit/ .
+rm -rf temp-adf
+```
+
+Then in your AI IDE:
+```
+"Read ai-tool-kit/AI_ENTRYPOINT.md and follow all rules defined there."
+```
+
+That's it. The framework is active.
+
+---
+
+## Recommended GitHub Topics
+
+> Add these to your repo's **About** section for discoverability:
+
+`ai-toolkit` `prompt-engineering` `agentic-ai` `cursor` `windsurf` `llm` `anti-hallucination` `software-architecture` `developer-tools` `ai-coding` `claude` `gpt4` `gemini` `multi-agent`
+
+---
+
+## License
+
+MIT License © 2026 Dhanush M
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies, subject to the standard MIT conditions.
+
+---
+
+<div align="center">
+
+**Built with obsession by [Dhanush M](https://github.com/dhanu-17-git)**
+
+*If this framework saved you from an AI hallucination nightmare — give it a ⭐*
+
+</div>
