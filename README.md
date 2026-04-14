@@ -1,13 +1,25 @@
 <div align="center">
 
-```
-                     _                    _   _        ____              
-                    / \   __ _  ___ _ __ | |_(_) ___  |  _ \  _____   __
-                   / _ \ / _` |/ _ \ '_ \| __| |/ __| | | | |/ _ \ \ / /
-                  / ___ \ (_| |  __/ | | | |_| | (__  | |_| |  __/\ V / 
-                 /_/   \_\__, |\___|_| |_|\__|_|\___| |____/ \___| \_/  
-                |___/            DEV FRAMEWORK                  
-```
+<div align="center">
+
+<pre>
+█████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ ██████╗
+██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔════╝
+███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║██║     
+██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██║     
+██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║╚██████╗
+╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝
+
+> initializing agentic-dev framework...
+> loading anti-hallucination guards ███████░░░ 70%
+> binding pipeline engine ██████████ 100%
+> system ready.
+
+[ AGENTIC DEV FRAMEWORK v3.1 ELITE ]
+</pre>
+
+</div>
+
 
 **A production-grade, anti-hallucination prompt framework**  
 **that helps transform LLMs into structured, disciplined engineering assistants.**
