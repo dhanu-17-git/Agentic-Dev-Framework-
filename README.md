@@ -1,25 +1,24 @@
 <div align="center">
 
 ```
- █████╗  ██████╗ ███████╗███╗   ██╗████████╗██╗ ██████╗
-██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝██║██╔════╝
-███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║   ██║██║
-██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║   ██║██║
-██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║   ██║╚██████╗
-╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝
-                              DEV FRAMEWORK
+    _                    _   _        ____              
+   / \   __ _  ___ _ __ | |_(_) ___  |  _ \  _____   __
+  / _ \ / _` |/ _ \ '_ \| __| |/ __| | | | |/ _ \ \ / /
+ / ___ \ (_| |  __/ | | | |_| | (__  | |_| |  __/\ V / 
+/_/   \_\__, |\___|_| |_|\__|_|\___| |____/ \___| \_/  
+        |___/            DEV FRAMEWORK                  
 ```
 
 **A production-grade, anti-hallucination prompt framework**  
-**that turns any LLM into a deterministic senior-level software architect.**
+**that helps transform LLMs into structured, disciplined engineering assistants.**
 
 <br/>
 
 [![Version](https://img.shields.io/badge/version-3.1%20Elite-blueviolet?style=for-the-badge&logo=rocket)](.)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 [![Files](https://img.shields.io/badge/framework-82%20files%20%2F%2014%20dirs-orange?style=for-the-badge)](.)
-[![LLM Support](https://img.shields.io/badge/works%20with-Claude%20%7C%20GPT--4o%20%7C%20Gemini-blue?style=for-the-badge)](.)
-[![IDE Support](https://img.shields.io/badge/IDE-Cursor%20%7C%20Windsurf%20%7C%20Copilot-teal?style=for-the-badge)](.)
+[![LLM Support](https://img.shields.io/badge/works%20with-Claude%204.6%20%7C%20GPT--5.4%20%7C%20Gemini%203.1%20Pro-blue?style=for-the-badge)](.)
+[![IDE Support](https://img.shields.io/badge/IDE-Antigravity%20%7C%20Cursor%20%7C%20Windsurf%20%7C%20Copilot-teal?style=for-the-badge)](.)
 [![Made by](https://img.shields.io/badge/made%20by-Dhanush%20M-ff6b6b?style=for-the-badge)](https://github.com/dhanu-17-git)
 
 <br/>
@@ -29,6 +28,35 @@
 </div>
 
 ---
+
+## ⚡ Quick Start (10 seconds)
+
+1. Open your AI IDE (Antigravity / Cursor / Windsurf / Copilot)
+2. Paste:
+   `"Read ai-tool-kit/AI_ENTRYPOINT.md"`
+3. Ask your task:
+   `"Build authentication system with JWT"`
+
+→ The AI will automatically:
+* Load guardrails
+* Follow the full 9-stage pipeline
+* Generate structured contracts + code
+
+---
+
+```mermaid
+flowchart TD
+    U([User Prompt]) --> E[AI_ENTRYPOINT.md]
+    E --> AH[ANTI_HALLUCINATION/ always loaded]
+    E --> P[PIPELINE/ stage router]
+    P --> A[AGENTS/ persona assigned]
+    A --> TA[TEAM_AGENTS/ specialist activated]
+    TA --> SK[SKILLS/ capability loaded]
+    SK --> W[WORKFLOWS/ or TEAM_WORKFLOWS/]
+    W --> TC[TASK_CONTRACTS/ output produced]
+    TC --> PM[PROJECT_MEMORY/ state updated]
+    TC --> OUT([Final Output])
+```
 
 ## The Problem
 
@@ -43,23 +71,21 @@ Every developer using AI for code has hit the same wall:
 
 ---
 
-## How It Works — 30 Seconds
+## ⚙️ How It Works
 
-```bash
-# 1. Drop the toolkit into any project
-cp -r ai-tool-kit/ your-project/
+**1. Install**
+Drop the `ai-tool-kit/` folder into any project root. 
+*(No configuration or setup scripts required.)*
 
-# 2. Open Cursor / Windsurf / any AI IDE and say:
-"Read ai-tool-kit/AI_ENTRYPOINT.md"
+**2. Initialize**
+Tell Antigravity / Cursor / Windsurf / Copilot:
+> `"Read ai-tool-kit/AI_ENTRYPOINT.md"`
 
-# 3. Then just ask in plain English:
-"Build a user authentication system with JWT and refresh tokens"
+**3. Execute**
+Ask for what you want in plain English:
+> `"Build a user authentication system with JWT and refresh tokens"`
 
-# The AI auto-detects the task type, loads only the files it needs,
-# and follows the full pipeline — plan → contract → code → review → security
-```
-
-No configuration. No setup scripts. Just drop it in and go.
+*The AI auto-detects the task, loads only the necessary context, and executes the 9-stage pipeline.*
 
 ---
 
@@ -93,6 +119,11 @@ The AI **cannot skip stages.** Each stage produces a contract that the next stag
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+👉 **Output of the pipeline:**
+* **Structured contract:** What was designed and agreed upon.
+* **Verified code changes:** What was actually modified and patched.
+* **Memory updates:** What the system learned for your next session.
+
 ---
 
 ## Context-Aware Loading
@@ -101,16 +132,19 @@ The AI doesn't load all 82 files for every task. The smart entrypoint (`AI_ENTRY
 
 | Task Type | Files Loaded | Est. Tokens |
 |-----------|-------------|-------------|
-| Quick Fix | ~3 files | ~800 |
-| Debug Session | ~4 files | ~1,500 |
-| Code Review | ~4 files | ~1,500 |
-| Frontend Build | ~8 files | ~5,000 |
-| Project Bootstrap | ~10 files | ~12,000 |
-| Full Feature Dev | ~15 files | ~18,000 |
+| Quick Fix | ~2 files | ~300 |
+| Debug Session | ~4 files | ~1,200 |
+| Code Review | ~3 files | ~900 |
+| Frontend Build | ~6 files | ~3,500 |
+| Project Bootstrap | ~8 files | ~8,000 |
+| Full Feature Dev | ~12 files | ~12,000 |
 
 ---
 
-## Project Structure — 82 Files / 14 Directories
+👉 **You don’t need to understand every file here.**  
+Start with `AI_ENTRYPOINT.md` — the system will guide itself.
+
+## Project Structure — Highly Minimized
 
 <details>
 <summary><strong>📂 Expand full directory tree</strong></summary>
@@ -145,17 +179,14 @@ ai-tool-kit/
 │   ├── security.md
 │   └── documenter.md
 │
-├── ANTI_HALLUCINATION/           ← Guards against AI making things up
-│   ├── repository_mapper.md      ← Forces AI to scan real files first
-│   ├── file_verification.md
-│   ├── layer_protection.md
-│   └── change_scope_guard.md
+├── ANTI_HALLUCINATION/           ← Split conditional logic (Core vs Extended)
+│   ├── core_rules.md             ← Loads every time
+│   └── extended_rules.md         ← Loads only for complex features
 │
-├── PROJECT_MEMORY/               ← Persistent context across sessions
-│   ├── architecture_memory.md
-│   ├── feature_memory.md
-│   ├── tech_stack_memory.md
-│   └── decision_log.md
+├── PROJECT_MEMORY/               ← Scaled-back, state-only persistence
+│   ├── active_context.md
+│   ├── architecture.md
+│   └── decisions.md
 │
 ├── REPO_INTELLIGENCE/            ← Deep codebase understanding layer
 │   ├── repo_summary.md
@@ -181,7 +212,6 @@ ai-tool-kit/
 │   ├── dependency_eval.md
 │   ├── context_loader.md
 │   ├── error_recovery.md
-│   ├── anti_hallucination_guard.md
 │   ├── frontend_design.md        ← UI aesthetics & component rules
 │   ├── database_operations.md    ← Data safety rules
 │   ├── silent_failure_hunter.md  ← Elite: finds suppressed errors
@@ -189,7 +219,6 @@ ai-tool-kit/
 │   └── code_simplifier.md        ← Elite: reduces cognitive load
 │
 ├── CONTEXT/                      ← AI operating rules & constraints
-│   ├── anti_hallucination_rules.md
 │   ├── coding_rules.md
 │   ├── load_rules.md
 │   ├── ignore_rules.md
@@ -248,9 +277,9 @@ ai-tool-kit/
 
 | LLM | AI IDE | Works? |
 |-----|--------|--------|
-| Claude 3.5 / 3.7 Sonnet | Cursor | ✅ |
-| GPT-4o | Windsurf | ✅ |
-| Gemini 1.5 / 2.0 | GitHub Copilot | ✅ |
+| Claude 4.6 Sonnet | Antigravity IDE | ✅ |
+| GPT-5.4 | Cursor | ✅ |
+| Gemini 3.1 Pro | Windsurf | ✅ |
 | Any instruction-following LLM | Any AI IDE with file context | ✅ |
 
 ---

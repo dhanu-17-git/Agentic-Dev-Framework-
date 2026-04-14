@@ -1,52 +1,13 @@
-# Implementation Plan
+# Compact Implementation Plan Schema
 
-> **Produced by:** Planner  
-> **Consumed by:** Coder  
-> **Purpose:** Convert a feature contract into executable, ordered tasks
+> **Rule:** Max 8-12 lines per contract. JSON only.
 
----
-
-## Source
-Feature Contract: [reference feature name]
-
-## Tasks
-
-### Task 1
-**Description:** [What to do]  
-**Files:** [Exact files involved]  
-**Layer:** [Route / Service / Model / Template]
-
-### Task 2
-**Description:** [What to do]  
-**Files:** [Exact files involved]  
-**Layer:** [Route / Service / Model / Template]
-
-### Task 3
-**Description:** [What to do]  
-**Files:** [Exact files involved]  
-**Layer:** [Route / Service / Model / Template]
-
-## Order of Execution
+```json
+{
+  "phase": "plan_name",
+  "steps": ["step 1", "step 2", "step 3"],
+  "tests_required": true,
+  "blocked_by": [],
+  "notes": "1 line reasoning / trace tracking"
+}
 ```
-1 → 2 → 3
-```
-[Explain why this order — typically: models first, then services, then routes, then templates]
-
-## Dependencies
-
-| Type | Dependency | Status |
-|------|-----------|--------|
-| Library | [name] | Installed / Needed |
-| Service | [existing service] | Available |
-| Schema | [table/model] | Exists / Must Create |
-
-## Test Plan
-
-| Test Type | What to Test | File |
-|-----------|-------------|------|
-| Unit | [function/method] | [test file] |
-| Integration | [endpoint/flow] | [test file] |
-
----
-
-**Coder must follow this plan exactly. Any deviation requires planner re-approval.**

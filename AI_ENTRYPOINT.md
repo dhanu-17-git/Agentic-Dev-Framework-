@@ -1,173 +1,73 @@
-# AI Tool Kit — Entrypoint
+# AI ENTRYPOINT (BOOTLOADER)
 
-> **Created by:** Dhanush M  
-> **Version:** 3.1  
-> **Purpose:** Single bootloader for AI-assisted development. Read this file FIRST.
+This is the central operating system file. ALL sessions must begin by reading and executing this classification.
 
-This is a structured AI engineering toolkit with anti-hallucination safeguards, task contracts, and project memory. It contains 75+ files, but **you never load all of them.** You load only what the current task requires.
+## STEP 1: CLASSIFY TASK
+Identify the user's intent. Must map to ONE of these categories:
+- `quick_fix`: Small bug, typo, minor logic error.
+- `bug_fix`: Complex bug requiring trace/investigation.
+- `feature_build`: New function, route, component, or system.
+- `code_review`: Audit of recent changes.
+- `system_design`: Big picture architecture / bootstrapping.
 
----
+## STEP 2: LOAD MINIMUM REQUIRED CONTEXT
+Based on classification, load EXACTLY these files and NO OTHERS:
 
-## Core Rules (Always Active — No Exceptions)
+**IF quick_fix:**
+- `ANTI_HALLUCINATION/core_rules.md`
+- Relevant `SKILLS/` (MAX 2)
 
-- **NEVER** invent file paths — verify they exist before editing
-- **NEVER** rewrite entire files — use minimal, targeted patch edits
-- **NEVER** hallucinate architecture, dependencies, or module names
-- **ALWAYS** respect existing project structure and naming conventions
-- **ALWAYS** ask for clarification before making destructive changes
-- **ALWAYS** stop and report if a step cannot be completed safely
+**IF bug_fix:**
+- `ANTI_HALLUCINATION/core_rules.md`
+- `ANTI_HALLUCINATION/extended_rules.md`
+- `WORKFLOWS/debugging.md`
+- `AGENTS/debugger.md`
 
----
+**IF feature_build:**
+- `ANTI_HALLUCINATION/core_rules.md`
+- `ANTI_HALLUCINATION/extended_rules.md`
+- `PIPELINE/*` (adaptive subset, see Step 3)
+- `TASK_CONTRACTS/*`
 
-## Step 1: Detect the Task Type
+**IF system_design:**
+- `ANTI_HALLUCINATION/*`
+- `PIPELINE/agent_pipeline.md`
+- `PROJECT_MEMORY/*` (Active context only)
+- `REPO_INTELLIGENCE/*`
 
-Read the user's request and classify it into ONE of these modes:
+## STEP 3: ADAPTIVE PIPELINE EXECUTION
+Short-circuit the 9-stage pipeline based on the task:
 
-| Mode | When to Use | Context Cost |
-|------|-------------|--------------|
-| 🔧 **Quick Fix** | Bug fix, typo, small edit, one-file change | Light (~3 files) |
-| 🐛 **Debug** | Investigating errors, tracing issues, diagnosing failures | Light (~4 files) |
-| 👀 **Code Review** | Reviewing code quality, security, conventions | Light (~4 files) |
-| 🎨 **Frontend Build** | Building UI, pages, components, design work | Medium (~8 files) |
-| 🏗️ **Feature Build** | New feature, multi-file change, architecture decisions | Full (~12 files) |
-| 🚀 **Project Bootstrap**| Starting from an empty folder, scaffolding a new app | Full (~10 files) |
+**IF quick_fix:**
+- Pipeline: Coder → Reviewer
+- *Skip Planning, skip Architecture.*
 
----
+**IF bug_fix:**
+- Pipeline: Repo Mapper → Coder → Tester → Reviewer
+- *Skip Brainstorming and Architecture.*
 
-## Step 2: Load Only What the Mode Requires
+**IF feature_build (Small):**
+- Pipeline: Planner → Coder → Reviewer
+- *Skip Architect.*
 
-### 🔧 Quick Fix Mode
-```
-Load → CONTEXT/coding_rules.md
-Load → ANTI_HALLUCINATION/repository_mapper.md
-Then → Fix the issue with minimal edits
-```
+**IF feature_build (Complex) / system_design:**
+- Pipeline: Full 9-Stages (Brainstorm → Security).
 
-### 🚀 Project Bootstrap (Zero-to-One) Mode
-```
-Load → SYSTEM_PROMPT.md (Phase 1-3)
-Load → CONTEXT/coding_rules.md
-Load → WORKFLOWS/project_bootstrap.md     ← The core bootstrap engine
-Load → PROJECT_MEMORY/tech_stack_memory.md
-Load → PROJECT_MEMORY/architecture_memory.md
-Load → PROJECT_MEMORY/decision_log.md
-Then → Scaffold, initialize memory, transition to feature build
-```
+## STEP 4: SESSION STRATEGY
+Do NOT mix large phases in one chat session.
+- Session 1 → Repository Mapping & Planning
+- Session 2 → Implementation & Commit
+- Session 3 → Debugging & Validation
 
-### 🐛 Debug Mode
-```
-Load → CONTEXT/coding_rules.md
-Load → ANTI_HALLUCINATION/repository_mapper.md
-Load → WORKFLOWS/debugging.md
-Load → AGENTS/debugger.md
-Then → Investigate, trace, and resolve
-```
+If task size approaches context limits, explicitly ask the user to start a new chat and pass the Task Contract JSON.
 
-### 👀 Code Review Mode
-```
-Load → CONTEXT/coding_rules.md
-Load → ANTI_HALLUCINATION/repository_mapper.md
-Load → WORKFLOWS/code_review.md
-Load → AGENTS/reviewer.md
-Then → Review, report findings, suggest fixes
-```
+## STEP 5: STRICT RESPONSE CONTROL
+- No repeated explanations or reasoning logic in conversational text.
+- No unnecessary storytelling.
+- No full file dumps. Output ONLY changed sections (use diff format when possible).
+- Output ONLY the required format. Prefer structured compact JSON blocks.
 
-### 🎨 Frontend Build Mode
-```
-Load → SYSTEM_PROMPT.md (Phase 1–5)
-Load → CONTEXT/coding_rules.md
-Load → ANTI_HALLUCINATION/repository_mapper.md
-Load → SKILLS/brainstorming.md
-Load → SKILLS/frontend_design.md          ← Design thinking before coding
-Load → AGENTS/builder.md
-Load → SKILLS/lint_and_validate.md
-Load → SKILLS/self_review.md
-Then → Design direction first, then implement
-```
-
-### 🏗️ Feature Build Mode (Full Pipeline)
-```
-Load → SYSTEM_PROMPT.md                   ← Full execution rules
-
-Phase 1: Context
-  → CONTEXT/anti_hallucination_rules.md
-  → CONTEXT/coding_rules.md
-  → CONTEXT/file_priority.md
-  → ANTI_HALLUCINATION/repository_mapper.md
-
-Phase 2: Intelligence
-  → REPO_INTELLIGENCE/repo_summary.md
-
-Phase 3: Memory
-  → PROJECT_MEMORY/architecture_memory.md
-  → PROJECT_MEMORY/feature_memory.md
-  → PROJECT_MEMORY/tech_stack_memory.md
-  → PROJECT_MEMORY/decision_log.md
-
-Phase 4: Plan
-  → SKILLS/brainstorming.md               ← Clarify requirements
-  → AGENTS/architect.md                   ← Design architecture
-  → PIPELINE/agent_pipeline.md            ← Execution order
-  → PIPELINE/agent_handoff_rules.md       ← Contract handoff rules
-  → Produce TASK_CONTRACTS/feature_contract.md
-  → Produce TASK_CONTRACTS/implementation_plan.md
-
-Phase 5: Build
-  → AGENTS/builder.md
-  → If frontend → SKILLS/frontend_design.md
-  → Produce TASK_CONTRACTS/patch_contract.md per file
-  → SKILLS/git_workflow.md
-
-Phase 6: Validate
-  → WORKFLOWS/testing.md
-  → SKILLS/tdd_workflow.md
-  → SKILLS/lint_and_validate.md
-
-Phase 7: Review
-  → AGENTS/reviewer.md
-  → TEAM_AGENTS/security.md
-  → SKILLS/silent_failure_hunter.md
-  → SKILLS/type_design_analyzer.md
-  → SKILLS/code_simplifier.md
-```
-
----
-
-## Step 3: Execute and Protect
-
-### Development Pipeline (Feature Build only)
-```
-brainstorming → repository_mapper → architect → planner → coder → tester → lint_and_validate → reviewer → security
-```
-
-### Fail-Safe Conditions
-The AI must **stop execution** if:
-- Repository structure cannot be mapped
-- Required files are missing
-- A change would rewrite an entire file unnecessarily
-- A change violates architecture layers
-- A workflow step cannot be completed safely
-
-**Report the issue instead of continuing.**
-
----
-
-## Toolkit Map (Reference Only — Do Not Load All)
-
-```
-ai-tool-kit/
-├── AI_ENTRYPOINT.md          ← YOU ARE HERE — start point
-├── SYSTEM_PROMPT.md          ← Full execution rules (Feature Build only)
-├── SKILLS/                   ← How-to guides (loaded per task)
-├── AGENTS/                   ← Role personas (loaded per task)
-├── TEAM_AGENTS/              ← Specialist roles (loaded per task)
-├── WORKFLOWS/                ← Step-by-step playbooks (loaded per task)
-├── ANTI_HALLUCINATION/       ← Safety guards (core files always loaded)
-├── CONTEXT/                  ← Ground rules (core files always loaded)
-├── PROJECT_MEMORY/           ← Persistent state (Feature Build only)
-├── REPO_INTELLIGENCE/        ← Project maps (Feature Build only)
-├── TASK_CONTRACTS/           ← Phase outputs (Feature Build only)
-├── DOC_TEMPLATES/            ← Doc generation templates
-├── IMPORTS/                  ← External imported skills
-└── TEAM_WORKFLOWS/           ← Multi-step pipelines
-```
+## STEP 6: PROJECT MEMORY UPDATES
+- Always update `PROJECT_MEMORY/active_context.md` at the end of a task.
+- Store key architecture decisions in `PROJECT_MEMORY/decisions.md` (store summaries, not full logs).
+- Do not reload full memory history across new sessions—load only the current active state.

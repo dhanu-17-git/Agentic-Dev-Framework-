@@ -1,39 +1,14 @@
-# Patch Contract
+# Compact Patch Contract Schema
 
-> **Produced by:** Coder  
-> **Consumed by:** Reviewer  
-> **Purpose:** Ensure every code change is minimal, safe, and traceable
+> **Rule:** Max 8-12 lines per contract. JSON only.
 
----
-
-## File
-[Exact file path to modify]
-
-## Reason
-[Why this change is required — reference task from implementation plan]
-
-## Change Type
-- [ ] Add
-- [ ] Modify
-- [ ] Remove
-
-## Scope
-**Functions affected:** [list specific functions]  
-**Lines affected:** [approximate range]  
-**Estimated size:** [number of lines changed]
-
-## Safety Check
-
-- [ ] Architecture layer is respected
-- [ ] No unrelated code is modified
-- [ ] Change does not exceed minimal scope
-- [ ] No hardcoded secrets or credentials
-- [ ] Existing tests still pass
-- [ ] File exists and has been verified
-
-## Expected Result
-[What behavior changes after this patch is applied]
-
----
-
-**Reviewer must validate this contract before approving the change.**
+```json
+{
+  "file": "path/to/file",
+  "type": "modify|add|remove",
+  "lines_touched": "14-22",
+  "impact": "safely scoped",
+  "tests_pass": true,
+  "notes": "1 line reasoning / trace tracking"
+}
+```
