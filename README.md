@@ -332,13 +332,7 @@ That's it. The framework is active.
 
 ---
 
-## Recommended GitHub Topics
 
-> Add these to your repo's **About** section for discoverability:
-
-`ai-toolkit` `prompt-engineering` `agentic-ai` `cursor` `windsurf` `llm` `anti-hallucination` `software-architecture` `developer-tools` `ai-coding` `claude` `gpt4` `gemini` `multi-agent`
-
----
 
 ## License
 
