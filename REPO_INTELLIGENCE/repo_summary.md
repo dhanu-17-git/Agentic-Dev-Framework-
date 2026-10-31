@@ -4,34 +4,28 @@
 > **Purpose:** Quick-access project summary for AI onboarding
 
 ## Project
-**Name:** [Project Name]
+**Name:** VIBEATHON 2026 — Agentic AI × AgriTech
 
-**Purpose:** [One-paragraph description of what this project does]
+**Purpose:** 6-hour hackathon project building a production-grade Agentic AI solution for an agriculture challenge. Emphasizes genuine agentic decision-making, tool execution, state/memory tracking, and guardrails.
 
-**Tech Stack:** [Framework], [Language], [Database], [Frontend]
+**Tech Stack:** Python, FastAPI, REST APIs, SQLite / PostgreSQL, OpenRouter / Gemini / Groq APIs, LangGraph / ADK / PydanticAI
 
-**Entrypoint:** [e.g. `app.py`]
+**Entrypoint:** Pending problem statement release
 
-## Major Modules
-
-| Module | Location | Purpose |
-|--------|----------|---------|
-| *Auth* | *routes/auth.py* | *User authentication and session management* |
-| *Student* | *routes/student.py* | *Student dashboard and features* |
-| *Admin* | *routes/admin.py* | *Admin dashboard and management* |
-| | | |
-
-## Architecture Pattern
+## Core Architectural Layers
 ```
-[Client] → Routes → Services → Models → [Database]
+[User / Interface] ↔ [FastAPI Endpoints] ↔ [Agent Orchestrator] ↔ [LLM Reasoning Engine]
+                                                ├── [Tools / External APIs / Models]
+                                                ├── [State & Memory Management]
+                                                └── [Validation & Guardrails]
 ```
 
-## Key Files
-- **Entrypoint:** [app.py]
-- **Config:** [config.py / .env]
-- **Database:** [db path or connection]
-- **Templates:** [templates/]
-- **Static:** [static/]
+## Readiness Checklist
+- [x] Agentic-Dev-Framework initialized with hackathon constraints
+- [ ] Problem statement revealed
+- [ ] Core user problem & agentic value proposition identified
+- [ ] API & LLM rate limits verified
+- [ ] Working vertical slice designed & implemented
 
 ---
 
